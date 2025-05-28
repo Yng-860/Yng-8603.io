@@ -4,28 +4,19 @@ function oblicz() {
     var wynikElement = document.getElementById("wynik");
     var typ = 0;
 
-    // Получаем выбранный тип панели
-    var typPanelu = document.querySelector('input[name="floor"]:checked');
-    if (typPanelu) {
-        switch (typPanelu.value) {
-            case "laminowane":
-                typ = 12;
-                break;
-            case "winylowe":
-                typ = 14;
-                break;
-            case "deska":
-                typ = 18;
-                break;
-        }
+    if (document.getElementById("laminowane").checked) {
+        typ = 12;
+    } else if (document.getElementById("winylowe").checked) {
+        typ = 14;
+    } else if (document.getElementById("deska").checked) {
+        typ = 18;
     }
 
-    // Проверка и вычисление
     if (!isNaN(dlugosc) && !isNaN(szerokosc) && typ !== 0) {
-        var powierzchnia = dlugosc * szerokosc;
-        var koszt = powierzchnia * typ;
-        wynikElement.innerHTML = "Koszt montażu: " + koszt.toFixed(2) + " zł";
+        var liczba = dlugosc * szerokosc;
+        var koszt = liczba * typ;
+        wynikElement.innerHTML = "Koszt: " + koszt + " zł";
     } else {
-        wynikElement.innerHTML = "Wpisz poprawne dane i wybierz typ paneli.";
+        wynikElement.innerHTML = "Wpisz poprawne dane";
     }
 }
